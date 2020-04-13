@@ -1,0 +1,11 @@
+
+以下セキュリティソフト誤検知リスト
+
+SecureAge APEX
+
+Malicious
+
+Ikarus
+
+Trapmine
+
