@@ -8,12 +8,23 @@ import time,sys
 import warnings
 import getpass
 import hashlib
+import configparser
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+config = configparser.ConfigParser()
+chk=os.path.isfile('config.ini')
+if chk==True:
+    config.read('config.ini')
+else:
+    print('')
+    print(' 設定ファイルが見つかりません')
+    key=input(' 展開キーワード　>> ')
 warnings.simplefilter('ignore')
 
 # 主キーここを変えると互換性が失われる変える際は注意すること
 print('')
 # また主キーはパスワードより長くしなければならない
-key=input(' 起動パスワード　>> ')
+#key=input(' 起動パスワード　>> ')
+key=config.get('config', 'key')
 hkey=len(key)
 if hkey<6:
     print('')
@@ -49,8 +60,6 @@ def pyzip(key):
     
     ciphertext=xor_encrypt(plaintext, key)
     s = urllib.parse.quote(ciphertext)
-    pass2=base64.b64encode(s.encode('utf-8'))
-    s = urllib.parse.quote(pass2)
     pass2=base64.b64encode(s.encode('utf-8'))
     pass2=str(pass2)
     pass2=hashlib.sha224(pass2.encode()).hexdigest()
@@ -111,8 +120,6 @@ def openzip(key):
     ciphertext =xor_encrypt(pass3, key)
     s = urllib.parse.quote(ciphertext)
     pass2=base64.b64encode(s.encode('utf-8'))
-    s = urllib.parse.quote(pass2)
-    pass2=base64.b64encode(s.encode('utf-8'))
     pass2=str(pass2)
     pass2=hashlib.sha224(pass2.encode()).hexdigest()
     pass2=bytes(pass2,encoding = "utf-8")
@@ -166,7 +173,7 @@ def openzip(key):
         time.sleep(5)
 
 # メニュー表示
-
+c=-1
 zipfilepointer=0
 while True:
     os.system('cls')
