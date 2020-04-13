@@ -3,8 +3,6 @@
 
 SecureAge APEX
 
-Malicious
-
 Ikarus
 
 Trapmine
