@@ -1,9 +1,8 @@
 
-以下セキュリティソフト誤検知リスト
-
-SecureAge APEX
-
-Ikarus
+以下セキュリティソフト(たぶん)誤検知リスト
 
 Trapmine
 
+virustotalにて確認済み
+
+16:33 2020/04/19
